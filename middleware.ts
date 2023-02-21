@@ -9,7 +9,7 @@ export function middleware(req: NextRequest) {
   const isInBeta = JSON.parse(req.cookies.get('beta')?.value || 'false')
 
   // Update url pathname
-  req.nextUrl.pathname = `/dp/[id]/${isInBeta ? 'beta' : 'non-beta'}`
+  req.nextUrl.pathname = `/dp/:id/${isInBeta ? 'beta' : 'non-beta'}`
 
   // Rewrite to url
   return NextResponse.rewrite(req.nextUrl)
